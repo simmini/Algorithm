@@ -11,18 +11,16 @@ public class Main {
 		Scanner sc=new Scanner(System.in);
 		A=sc.nextInt();
 		B=sc.nextInt();
-		int tmp=B%10;//5
-		int value=B/10;//38
-		int one=A*tmp;
+		int one=A*(B%10);
 		System.out.println(one);
-		tmp=value%10;//8
-		value=value/10;//3
-		int two=A*tmp;
+		
+		int two=A* (B%100/10);
 		System.out.println(two);
-		int three=A*value;
+		
+		int three=A*(B/100);
 		System.out.println(three);
 		
-		System.out.println(one+two*10+three*100);
+		System.out.println(A*B);
 	
 	}
 
