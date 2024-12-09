@@ -4,40 +4,30 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        Scanner sc=new Scanner(System.in);
-        String str=sc.nextLine();
-        char a[]=str.toCharArray();
-        int answer[]=new int[10];
+       Scanner sc=new Scanner(System.in);
+       String str=sc.next();
 
-        for(int i=0;i<a.length;i++){
-            answer[a[i]-'0']++;
-        }
-        //6 :2개 9 :2개 =>2세트임 =>4/2=2
+       char a[]=str.toCharArray();
 
-        //6 :1개 9 :2개 => 2세트 =3/2=1.xx 올림
+       int answer[]=new int[10];
 
-
-        //6솨 9 처리하고
-        int max=0;
-
-        for(int i=0;i<10;i++){
-            if(i!=6&&i!=9){
-                if(answer[i]>max){
-                    max=answer[i];
-                }
-            }
-
-        }
+       for (int i=0;i<a.length;i++){
+           int n=a[i]-'0';
+           if(a[i]=='6'){
+                n=9;
+           }
+           answer[n]++;
+       }
+       answer[9]=answer[9]/2+answer[9]%2;
+       int max=0;
+       for(int i:answer){
+           if(i>max){
+               max=i;
+           }
+       }
+        System.out.println(max);
 
 
-        int tmp=(int)(Math.ceil((answer[6]+answer[9])/2.0));
-        if(max>tmp){
-            System.out.println(max);
-        }else{
-            System.out.println(tmp);
-        }
 
-     //중복된게 있으면 하나씩 추가된거
-        //예외 6,9는 2개가 1개
     }
 }
